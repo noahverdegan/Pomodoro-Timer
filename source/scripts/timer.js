@@ -34,10 +34,9 @@ function endTask() {
   tasks[currTaskID][3] = currTaskDistractions;
   tasks[currTaskID][4] = currTaskProgress;
   tasks[currTaskID][5] = currTaskTime;
-  localStorage.setItem('tasks', JSON.stringify(tasks));
   finishDict[currTaskID] = tasks[currTaskID];
-  delete dict[currTaskID];
-  window.localStorage.setItem('tasks', JSON.stringify(dict));
+  delete tasks[currTaskID];
+  window.localStorage.setItem('tasks', JSON.stringify(tasks));
   window.localStorage.setItem('finished-tasks', JSON.stringify(finishDict));
   currTaskID = -1;
   let taskDiv = document.getElementById('task-list-id');

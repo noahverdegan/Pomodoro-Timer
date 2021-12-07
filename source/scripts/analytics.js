@@ -7,7 +7,7 @@ window.addEventListener('DOMContentLoaded', () => {
   document
     .getElementById('comp-tasks-dropdown')
     .addEventListener('change', (event) => {
-      displayAnalytics();
+      displayAnalytics(false);
     });
 });
 
@@ -40,17 +40,37 @@ function loadAnalytics() {
 }
 
 /**
+ * @method createSampleAnalytics
+ * @description Adds sample analytics
+ */
+function createSampleAnalytics() {
+  document.getElementById('comp-tasks-dropdown').value = "SAMPLE ANALYTICS";
+  displayAnalytics(true);
+}
+
+/**
  * @method displayAnalytics
  * @description Displays analytics for selected task
+ * @param {Boolean} isSample
  */
-function displayAnalytics() {
+function displayAnalytics(isSample) {
   document.getElementById('stat-display').innerHTML = '';
   let taskID = document.getElementById('comp-tasks-dropdown').value;
   let tasks = JSON.parse(localStorage.getItem('finished-tasks'));
-  let taskProgress = tasks[taskID][4];
-  let distractions = tasks[taskID][3];
-  let totalTime = tasks[taskID][5];
-  let cancelledWorkPomos = 0;
+  let taskProgress
+  let distractions
+  let totalTime
+  let cancelledWorkPomos = 0
+  if (isSample) {
+    taskProgress = [["wc",181],["w",1500],["sb",300],["w",1200],["sbc",100],["sb",180],["w",1200],["sb",120],["wc",60],["w",1500],["lb",900],["w",1800]];
+    distractions = [170,1012,2003,7817]
+    totalTime = 8991
+  } else{
+    taskProgress = tasks[taskID][4];
+    distractions = tasks[taskID][3];
+    totalTime = tasks[taskID][5];
+  }
+  cancelledWorkPomos = 0;
   let board = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   board.setAttribute('width', '1000');
   board.setAttribute('height', '200');
@@ -145,12 +165,20 @@ function displayAnalytics() {
   stats.setAttribute('id', 'stats');
 
   let statEstPomo = document.createElement('p');
-  statEstPomo.innerHTML = 'Estimated Work Pomos: ' + tasks[taskID][1] + '<br>';
+  if (isSample) {
+    statEstPomo.innerHTML = 'Estimated Work Pomos: 10<br>';
+  } else {
+    statEstPomo.innerHTML = 'Estimated Work Pomos: ' + tasks[taskID][1] + '<br>';
+  }
   statEstPomo.setAttribute('id', 'stat-est-pomo');
   stats.appendChild(statEstPomo);
 
   let statActPomo = document.createElement('p');
-  statActPomo.innerHTML = 'Completed Work Pomos: ' + tasks[taskID][2];
+  if (isSample) {
+    statActPomo.innerHTML = 'Completed Work Pomos: 5';
+  } else {
+    statActPomo.innerHTML = 'Completed Work Pomos: ' + tasks[taskID][2];
+  }
   statActPomo.setAttribute('id', 'stat-act-pomo');
   stats.appendChild(statActPomo);
 

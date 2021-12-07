@@ -161,6 +161,12 @@ rect:hover {
   text-align: center;
 }
 
+#sample-analytics-button {
+  position: fixed;
+  text-align: right;
+  right: 20px;
+}
+
 #stat-display {
   text-align: center;
   width: 1000px;

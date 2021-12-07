@@ -159,8 +159,8 @@ Creates drop-down on analytics page for tasks
 **Kind**: global function  
 <a name="displayAnalytics"></a>
 
-## displayAnalytics()
-Displays analytics for selected task
+## displayAnalytics(isSample)
+Displays analytics for selected task, or sample analytics if isSample
 
 **Kind**: global function  
 <a name="setLabel"></a>

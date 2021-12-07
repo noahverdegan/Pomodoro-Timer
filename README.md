@@ -1,3 +1,3 @@
 # Spirit Veggies Pomodoro Timer
 
-Website URL: https://jacksonconte.github.io/cse110-wi21-group24/
+Website URL: https://noahverdegan.github.io/Pomodoro-Timer/
