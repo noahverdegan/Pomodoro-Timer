@@ -16,6 +16,8 @@ window.addEventListener('DOMContentLoaded', () => {
  * @description Creates drop-down on analytics page for tasks
  */
 function loadAnalytics() {
+  document.getElementById('no-tasks').style.display = 'block';
+  document.getElementById('task-select').style.display = 'none';
   document.getElementById('comp-tasks-dropdown').innerHTML = '';
   document.getElementById('stat-display').innerHTML = '';
 
@@ -46,6 +48,8 @@ function loadAnalytics() {
 function createSampleAnalytics() {
   document.getElementById('comp-tasks-dropdown').value = "SAMPLE ANALYTICS";
   displayAnalytics(true);
+  document.getElementById('no-tasks').style.display = 'none';
+  document.getElementById('task-select').style.display = 'initial';
 }
 
 /**
